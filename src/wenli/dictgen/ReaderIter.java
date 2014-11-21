@@ -11,6 +11,7 @@ import java.util.regex.Pattern;
 public class ReaderIter {
 	private Map<String, String> dict;
 
+	@SuppressWarnings("resource")
 	public Map<String, String> extractPattern(String filename, String pattern)
 			throws IOException {
 		dict = new HashMap<String, String>();

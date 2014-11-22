@@ -1,4 +1,4 @@
-package wenli.dictgen;
+package test.dictgen;
 
 import java.util.ArrayList;
 import java.util.Iterator;

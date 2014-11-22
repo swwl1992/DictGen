@@ -1,4 +1,4 @@
-package wenli.dictgen;
+package test.dictgen;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,6 +23,8 @@ public class Config {
 	public static String JAVA_PATTERN = "dictionary\\.get\\((.+?)\\)";
 	public static String XHTML_PATTERN = "dicon.dictionary\\[(.+?)\\]";
 	public static String SQL_OPEN = "INSERT INTO s_dictionary_value (dict_seq, lang_seq, key, value) VALUES ('1', ";
+	public static String HTTP_REFERRER = "http://localhost";
+	public static String API_KEY = "AIzaSyBSi85lxbAneavX4bdAK2axfqrAy2fKwRg";
 	
 	public static final Map<String, String> EXTENSION_PATTERN_MAP;
     public static final Map<String, Language> KEY_LANGUAGE_MAP;
@@ -32,8 +34,7 @@ public class Config {
 		EXTENSION_PATTERN_MAP.put(JAVA_FILE, JAVA_PATTERN);
 		EXTENSION_PATTERN_MAP.put(XHTML_FILE, XHTML_PATTERN);
 	}
-    static
-    {
+    static {
     	KEY_LANGUAGE_MAP = new HashMap<String, Language>();
     	KEY_LANGUAGE_MAP.put("2", Language.CHINESE_TRADITIONAL);
     	KEY_LANGUAGE_MAP.put("3", Language.JAPANESE);

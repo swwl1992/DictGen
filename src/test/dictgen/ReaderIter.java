@@ -1,4 +1,4 @@
-package wenli.dictgen;
+package test.dictgen;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

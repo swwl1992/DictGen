@@ -1,4 +1,4 @@
-package wenli.dictgen;
+package test.dictgen;
 
 import java.io.File;
 import java.io.IOException;
@@ -49,8 +49,8 @@ public class Runner {
 		Translator translator = new Translator();
 		Runner runner = new Runner();
 		
-		GoogleAPI.setHttpReferrer("http://wanwenli.com");
-		GoogleAPI.setKey("AIzaSyBSi85lxbAneavX4bdAK2axfqrAy2fKwRg");
+		GoogleAPI.setHttpReferrer(Config.HTTP_REFERRER);
+		GoogleAPI.setKey(Config.API_KEY);
 		Map<String, String> finalDict = runner.combineDict(Config.PROJECT_DIR, Config.EXTENSION_PATTERN_MAP);
 		
 		Iterator<Entry<String, Language>> iter = Config.KEY_LANGUAGE_MAP.entrySet().iterator();

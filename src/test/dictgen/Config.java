@@ -7,7 +7,6 @@ import com.google.api.translate.Language;
 
 /*
  * Dictionary SQL generator
- * Author: Wan Wenli Simon
  * Last updated: 21-11-2014
  */
 
@@ -27,16 +26,16 @@ public class Config {
 	public static String API_KEY = "AIzaSyBSi85lxbAneavX4bdAK2axfqrAy2fKwRg";
 	
 	public static final Map<String, String> EXTENSION_PATTERN_MAP;
-    public static final Map<String, Language> KEY_LANGUAGE_MAP;
+	public static final Map<String, Language> KEY_LANGUAGE_MAP;
 	
-    static {
+	static {
 		EXTENSION_PATTERN_MAP = new HashMap<String, String>();
 		EXTENSION_PATTERN_MAP.put(JAVA_FILE, JAVA_PATTERN);
 		EXTENSION_PATTERN_MAP.put(XHTML_FILE, XHTML_PATTERN);
 	}
-    static {
-    	KEY_LANGUAGE_MAP = new HashMap<String, Language>();
-    	KEY_LANGUAGE_MAP.put("2", Language.CHINESE_TRADITIONAL);
-    	KEY_LANGUAGE_MAP.put("3", Language.JAPANESE);
-    }
+	static {
+		KEY_LANGUAGE_MAP = new HashMap<String, Language>();
+		KEY_LANGUAGE_MAP.put("2", Language.CHINESE_TRADITIONAL);
+		KEY_LANGUAGE_MAP.put("3", Language.JAPANESE);
+	}
 }

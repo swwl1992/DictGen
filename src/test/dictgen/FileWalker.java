@@ -8,25 +8,25 @@ import java.util.Map;
 import com.google.api.GoogleAPIException;
 
 public class FileWalker {
-    private List<File> result;
+	private List<File> result;
 
 	public void walk(String path, String extension) {
-        File root = new File( path );
-        File[] list = root.listFiles();
+		File root = new File( path );
+		File[] list = root.listFiles();
 
-        if (list == null) return;
+		if (list == null) return;
 
-        for (File f : list) {
-            if (f.isDirectory()) {
-                walk(f.getAbsolutePath(), extension);
-            }
-            else {
-            	if(f.getName().contains(extension)) {
-            		result.add(f.getAbsoluteFile());
-            	}
-            }
-        }
-    }
+		for (File f : list) {
+			if (f.isDirectory()) {
+				walk(f.getAbsolutePath(), extension);
+			}
+			else {
+				if(f.getName().contains(extension)) {
+					result.add(f.getAbsoluteFile());
+				}
+			}
+		}
+	}
 
 	public List<File> extractFiles(String path, String extension) {
 		result = new ArrayList<File>();

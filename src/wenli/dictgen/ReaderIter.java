@@ -29,7 +29,7 @@ public class ReaderIter {
 				// System.out.println(m.group(0));
 				String innerStr = m.group(1);
 				String key = innerStr.substring(1, innerStr.length() - 1);
-				String val = capitalizeFirst(splitCamelCase(key));
+				String val = capitalizeFirstChar(splitCamelCase(key));
 				dict.put(key, val);
 			}
 		}
@@ -43,7 +43,7 @@ public class ReaderIter {
 				" ").trim();
 	}
 
-	private String capitalizeFirst(String line) {
+	private String capitalizeFirstChar(String line) {
 		return Character.toUpperCase(line.charAt(0)) + line.substring(1);
 	}
 }

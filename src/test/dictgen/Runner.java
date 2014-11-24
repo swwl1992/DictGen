@@ -2,6 +2,7 @@ package test.dictgen;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -14,7 +15,7 @@ import com.google.api.GoogleAPIException;
 import com.google.api.translate.Language;
 
 public class Runner {
-	
+
 	// extract all patterns from all files
 	// combine them into one whole dictionary
 	public Map<String, String> combineDict(String rootDir, Map<String, String> extensionPatternMap) {
@@ -22,15 +23,15 @@ public class Runner {
 		ReaderIter readerIter = new ReaderIter();
 		Map<String, String> finalDict = new HashMap<String, String>();
 		List<File> allFiles = new ArrayList<File>();
-		
+
 		Iterator<Entry<String, String>> iter = extensionPatternMap.entrySet().iterator();
 		while (iter.hasNext()) {
 			Map.Entry<String, String> pairs = iter.next();
 			String extension = pairs.getKey();
 			String pattern = pairs.getValue();
-			
+
 			allFiles.addAll(fileWalker.extractFiles(rootDir, extension));
-		
+
 			for (File file : allFiles) {
 				try {
 					Map<String, String> dict = readerIter.extractPattern(file.getAbsolutePath(), pattern);
@@ -45,14 +46,14 @@ public class Runner {
 		return finalDict;
 	}
 
-	public static void main(String[] args) throws GoogleAPIException, InterruptedException {
+	public static void main(String[] args) throws GoogleAPIException, InterruptedException, UnsupportedEncodingException {
 		Translator translator = new Translator();
 		Runner runner = new Runner();
-		
+
 		GoogleAPI.setHttpReferrer(Config.HTTP_REFERRER);
 		GoogleAPI.setKey(Config.API_KEY);
 		Map<String, String> finalDict = runner.combineDict(Config.PROJECT_DIR, Config.EXTENSION_PATTERN_MAP);
-		
+
 		Iterator<Entry<String, Language>> iter = Config.KEY_LANGUAGE_MAP.entrySet().iterator();
 		SqlGen.sqlGenerator(finalDict, "1");
 		while (iter.hasNext()) {
@@ -62,5 +63,6 @@ public class Runner {
 			translator.Translate(finalDict, langKey, language);
 			iter.remove();
 		}
+		System.out.println(Config.COMPLETE_MSG);
 	}
 }

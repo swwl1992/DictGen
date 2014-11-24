@@ -15,19 +15,20 @@ public class Config {
 	public static String SQL_CLOSE = "');";
 	public static String JAVA_FILE = ".java";
 	public static String XHTML_FILE = ".xhtml";
-	
+	public static String COMPLETE_MSG = "Complete";
+
 	// you may change the following variables
-	public static String PROJECT_DIR = "C:\\Temp";
+	public static String PROJECT_DIR = "C:\\eclipse\\Eclipse4Starter\\workspace\\RD4";
 	public static String OUT_SQL_FILE = "dictionary.sql";
 	public static String JAVA_PATTERN = "dictionary\\.get\\((.+?)\\)";
 	public static String XHTML_PATTERN = "dicon.dictionary\\[(.+?)\\]";
 	public static String SQL_OPEN = "INSERT INTO s_dictionary_value (dict_seq, lang_seq, key, value) VALUES ('1', ";
 	public static String HTTP_REFERRER = "http://localhost";
 	public static String API_KEY = "AIzaSyBSi85lxbAneavX4bdAK2axfqrAy2fKwRg";
-	
+
 	public static final Map<String, String> EXTENSION_PATTERN_MAP;
 	public static final Map<String, Language> KEY_LANGUAGE_MAP;
-	
+
 	static {
 		EXTENSION_PATTERN_MAP = new HashMap<String, String>();
 		EXTENSION_PATTERN_MAP.put(JAVA_FILE, JAVA_PATTERN);

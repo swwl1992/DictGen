@@ -15,6 +15,7 @@ Release 0.01 ready.
 - Open `Config.java` and change the variables accordingly.
 
 ## Configuration
+- Set the encoding of console to UTF-8 (Run -> Run Configurations -> Common -> Encoding)
 - Open `Config.java`
 - `PROJECT_DIR` is the root directory where the generator starts seeking patterns.
 - `EXTENSION_PATTERN_MAP` is the extension and pattern map. Each entry is a file extension (e.g. ".java") and the target patterns inside (e.g. "private String").

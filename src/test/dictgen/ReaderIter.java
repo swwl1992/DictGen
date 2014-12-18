@@ -3,7 +3,9 @@ package test.dictgen;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -11,7 +13,6 @@ import java.util.regex.Pattern;
 public class ReaderIter {
 	private Map<String, String> dict;
 
-	@SuppressWarnings("resource")
 	public Map<String, String> extractPattern(String filename, String pattern)
 			throws IOException {
 		dict = new HashMap<String, String>();
@@ -30,9 +31,36 @@ public class ReaderIter {
 				// System.out.println(m.group(0));
 				String innerStr = m.group(1);
 				String key = innerStr.substring(1, innerStr.length() - 1);
-				String val = capitalizeFirstChar(splitCamelCase(key));
+				String val;
+				if(key.contains("_")) {
+					val = capitalizeFirstChar(key.replace("_", " "));
+				} else {
+					val = capitalizeFirstChar(splitCamelCase(key));
+				}				
 				dict.put(key, val);
 			}
+		}
+		return dict;
+	}
+
+	public List<String> processInputFile(String fileName) throws IOException {
+		List<String> result = new ArrayList<String>();
+		BufferedReader br = new BufferedReader(new FileReader(fileName));
+		String line;
+		while ((line = br.readLine()) != null) {
+			result.add(line);
+		}
+		br.close();
+		return result;
+	}
+
+	public Map<String, String> makeListToMap(List<String> input, Map<String, String> map) {
+		Map<String, String> dict = new HashMap<String, String>();
+		int halfSize = input.size() / 2;
+		int i = 0;
+		for(String key : map.keySet()) {
+			dict.put(key, input.get(i + halfSize));
+			++i;
 		}
 		return dict;
 	}

@@ -18,7 +18,7 @@ public class SqlGen {
 		}
 		return sqls;
 	}
-	
+
 	public static String sqlWrapper(String langKey, String key, String value) {
 		 return Config.SQL_OPEN + langKey + ", '" + key + "', '" + value + Config.SQL_CLOSE;
 	}

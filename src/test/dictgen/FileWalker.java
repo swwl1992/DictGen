@@ -3,9 +3,6 @@ package test.dictgen;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-
-import com.google.api.GoogleAPIException;
 
 public class FileWalker {
 	private List<File> result;
@@ -36,6 +33,6 @@ public class FileWalker {
 
 	// so far it only prints to console
 	// you may modify it such that it writes to files
-	public void writeFile(String filename, Map<String, String> dict, String langKey) throws GoogleAPIException {
+	public void writeFile(String filename, List<String> input) {
 	}
 }
